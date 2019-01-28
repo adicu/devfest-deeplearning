@@ -17,15 +17,32 @@ Our goal is to see how the loss function changes when we change a given weight. 
 However, what seems like "just" changing a single weight quickly snowballs into a series of changes that effectively forces us to recalculate all of the weights in our networks. Let's break that down:
 
 1. We change a single weight.
+
 ![alt text](http://neuralnetworksanddeeplearning.com/images/tikz22.png)
 
-2. Th
+2. This changes the activation of the corresponding neuron.
 
-However, changing that single weight changes the output activation of the corresponding neuron, which then causes changes in all of the activations in the next layer, and the next, and so on. So, recalculating this loss function after changing a single weight requires us to pass through the entire neural network again!
+![alt text](http://neuralnetworksanddeeplearning.com/images/tikz23.png)
+
+3. Changing one activation changes *all* the activations in the next layer, and the next, so on and so forth.
+
+![alt text](http://neuralnetworksanddeeplearning.com/images/tikz24.png)
+
+4. Finally, this causes some change in our final loss. 
+
+![alt text](http://neuralnetworksanddeeplearning.com/images/tikz25.png)
+
+So, recalculating this loss function after changing a single weight requires us to pass through the entire neural network again!
 
 To make matters worse, consider how many different weights and biases a single neural network can have - millions! All of a sudden, changing each weight/bias individually and recalculating the loss function each time seems a lot more daunting, right? 
 
 As we'll see, backpropagation allows us to calculate all of the partial derivatives in one pass forward and one pass backward through the neural network. So, instead of calculating the loss function a million times (which requires a million forward passes), we now just need to make a forward and a backward pass. Pretty great!
+
+## The Math - Do You Need It?
+
+If you're content using neural networks as a black box, no. One can learn to use neural networks effectively without knowing this math - you can choose an architecture for your neural network, pass it some data, and get (with some experience and trial/error) meaningful results.
+
+However, if you want to know what it really is that your neural network is doing - to gain some understanding on how it "learns" -the math is where the magic happens. For those insights, read on.
 
 ## The Four Fundamental Equations
 

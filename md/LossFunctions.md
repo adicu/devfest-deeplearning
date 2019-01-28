@@ -1,5 +1,5 @@
 
-# Loss Functions
+#Loss Functions
 ---
 ## Motivation
 At this point, you should understand how perceptrons can pass information through a neural network. If a network of perceptrons is the performer on stage delivering the flashy results of deep learning, loss functions are the critics in the audience who can evaluate the result with a standard. As we will see in the next section, networks take the feedback produced by loss functions in order to update their weights (_Note_:  This implies that we have talked about weights in the feed forward section) and produce incrementally better output.

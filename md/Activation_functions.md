@@ -13,8 +13,8 @@ Biological neurons receive signals via _dendrites_ and output signals via an _ax
 
 | Biological | Artificial |
 |-----------------|---------------|
-| Neuron firing rate | Activation function $\phi$ |
-| Voltage spike | $\phi(x)$
+| Neuron firing rate | Activation function |
+| Voltage spike | $\phi(x)$ |
 | Axon signal | $x$ |
 | Synaptic strength | $w^T$ |
 
@@ -34,7 +34,7 @@ The _sigmoid_ non-linearity takes an input $x \in \mathbb{R}$ and squashes it in
 import matplotlib.pyplot as plt
 import numpy as np
 
-X = np.arange(-10., 10., 0.1)
+X = np.arange(-5., 5., 0.1)
 sigmoid = lambda x: 1/(1+np.exp(-x))
 plt.plot(X, [sigmoid(x) for x in X], label='$\sigma(x)$')
 plt.legend();
@@ -48,7 +48,9 @@ plt.legend();
 \begin{align*}
 tanh(x) &= \frac{e^x - e^{-x}}{e^x + e^{-x}}
 \end{align*}
+
 The _tanh_ non-linearity also takes an input $x \in \mathbb{R}$ and squashes it into an output $ -1 \leq \sigma(x) \leq 1$. Like the logistic sigmoid,  _tanh_ saturates at extreme values of $x$. Unlike the logistic sigmoid, the _tanh_ function is centered at $0$. This makes sense because the _tanh_ function is actually just a scaled sigmoid:
+
 \begin{align*}
 tanh(x) &= \frac{e^x - e^{-x}}{e^x + e^{-x}} \\
 &= \frac{1-e^{-2x}}{1+e^{-2x}} \\
@@ -61,7 +63,7 @@ tanh(x) &= \frac{e^x - e^{-x}}{e^x + e^{-x}} \\
 import matplotlib.pyplot as plt
 import numpy as np
 
-X = np.arange(-10., 10., 0.1)
+X = np.arange(-5., 5., 0.1)
 def tanh(x):
   u = np.exp(x)
   v = 1/u
@@ -112,3 +114,41 @@ $$
 h = \phi(w^T x + b)
 $$
 and now have achieved nonlinear behavior.
+
+# Exercise
+
+1. Implement the logistic sigmoid, the tanh, and the ReLU activiation functions. (Using numpy is easiest)
+
+```python
+class Sigmoid():
+    @staticmethod
+     def fn(x):
+        '''your implementation here'''
+
+class Tanh():
+    @staticmethod
+    def fn(x):
+        '''your implementation here'''
+
+class ReLU():
+    @staticmethod
+     def fn(x)
+        '''your implementation here'''
+```
+
+2. Create a simple one-layer neural network by taking the perceptron that you wrote in the previous section and passing the output into your choice of activation function. When calling `nn.run(x)` you should simple be calocual
+
+```python
+class NeuralNetwork():
+    self.layers = []
+    self.activation_function = None
+    def __init__(self, ...):
+        '''your implementation here'''
+     
+    def run(self, x):
+        '''
+        x: input values (e.g. test using a random vector x)
+        your implementation here
+        '''
+   
+```
